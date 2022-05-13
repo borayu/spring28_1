@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.javabora.spring_28_1.dao.IDao">
+	<select id="listDao" resultType="com.javabora.spring_28_1.dto.ContentDto">
+		SELECT * FROM board ORDER BY mid aSC
+	</select>
+
+	<insert id="writeDao">
+		INSERT INTO board (mid, mname, mphone, maddress, mdate) VALUES(board_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4})
+	</insert>
+
+	<select id="viewDao" resultType="com.javabora.spring_28_1.dto.ContentDto">
+		SELECT * FROM board WHERE mid = #{param1}
+	</select>
+	
+	<delete id="deleteDao">
+		DELETE FROM board WHERE mid = #{param1}	
+	</delete>
+	
+	<update id="modifyDao">
+		UPDATE board SET mname=#{param1},  mphone=#{param2}, maddress=#{param3}, mdate=#{param4} WHERE mid=#{param5}
+	</update>
+</mapper>
